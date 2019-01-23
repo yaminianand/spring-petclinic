@@ -26,5 +26,12 @@ pipeline{
                 archiveArtifacts artifacts: 'target/*.jar', fingerprint: true
             }
         }
+        stage('Deploy'){
+            steps{
+                input 'Do you approve the deployment?'
+                sh 'scp target/*.jar deploy1@45.76.161.96:/home/deploy1'
+                sh "ssh deploy1@45.76.161.96 'nohup java -jar /home/deploy1/spring-petclinic-2.1.0.BUILD-SNAPSHOT.jar &'"
+            }
+        }
     }
 }
