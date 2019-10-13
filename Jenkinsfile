@@ -30,8 +30,8 @@ pipeline{
             steps{
 		sh 'scp /var/lib/jenkins/workspace/SpringPetclinic/target/*.jar deploy@45.76.96.139:/home/deploy'
 		sh 'scp /var/lib/jenkins/workspace/SpringPetclinic/target/Dockerfile deploy@45.76.96.139:/home/deploy'
-		sh "ssh deploy@45.76.96.139 'docker build /home/deploy/ -t anjurose/petclinic'"
-		sh "ssh deploy@45.76.96.139 'docker run -d -p 8087:8080 anjurose/petclinic'"
+		sh "ssh produser@45.76.96.139 'docker build /home/deploy/ -t anjurose/petclinic'"
+		sh "ssh produser@45.76.96.139 'docker run -d -p 8087:8080 anjurose/petclinic'"
             }
         }
     }
