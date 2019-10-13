@@ -28,9 +28,10 @@ pipeline{
         }
         stage('Deploy'){
             steps{
-                input 'Do you approve the deployment?'
-                sh 'scp target/*.jar deploy@45.76.96.139:/home/deploy'
-                sh "ssh deploy@45.76.96.139 'nohup java -jar /home/deploy/spring-petclinic-2.1.0.BUILD-SNAPSHOT.jar &'"
+		sh 'scp /var/lib/jenkins/workspace/SpringPetclinic/target/*.jar deploy@45.76.96.139:/home/deploy'
+		sh 'scp /var/lib/jenkins/workspace/SpringPetclinic/target/Dockerfile deploy@45.76.96.139:/home/deploy'
+		sh "ssh root@45.76.96.139 'docker build /home/deploy/ -t anjurose/petclinic'"
+		sh "ssh root@45.76.96.139 'docker run -d -p 8087:8080 anjurose/petclinic'"
             }
         }
     }
