@@ -28,9 +28,9 @@ pipeline{
         }
         stage('Deploy'){
             steps{
-		sh 'scp /var/lib/jenkins/workspace/SpringPetclinic/target/*.jar deploy@45.76.96.139:/home/deploy'
-		sh 'scp /var/lib/jenkins/workspace/SpringPetclinic/target/Dockerfile deploy@45.76.96.139:/home/deploy'
-		sh "ssh produser@45.76.96.139 'docker build /home/deploy/ -t anjurose/petclinic'"
+		sh 'scp /var/lib/jenkins/workspace/SpringPetclinic/target/*.jar produser@45.76.96.139:/home/produser'
+		sh 'scp /var/lib/jenkins/workspace/SpringPetclinic/Dockerfile produser@45.76.96.139:/home/produser'
+		sh "ssh produser@45.76.96.139 'docker build /home/produser -t anjurose/petclinic'"
 		sh "ssh produser@45.76.96.139 'docker run -d -p 8087:8080 anjurose/petclinic'"
             }
         }
