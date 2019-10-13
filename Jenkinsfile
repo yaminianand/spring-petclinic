@@ -30,8 +30,8 @@ pipeline{
             steps{
                 input 'Do you approve the deployment?'
                 sh 'scp target/*.jar produser@45.76.96.139:/home/produser/'
-                sh "ssh produser@45.76.96.139'nohup java -jar /home/produser/spring-petclinic-2.1.0.BUILD-SNAPSHOT.jar &'"
-            }
+            	sh "ssh produser@45.76.96.139 'nohup java -jar /home/produser/spring-petclinic-2.1.0.BUILD-SNAPSHOT.jar &'"
+		}
         }
     }
 }
