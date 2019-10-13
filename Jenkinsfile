@@ -28,7 +28,7 @@ pipeline{
         }
         stage('Deploy'){
             steps{
-		sh 'cp /var/lib/jenkins/workspace/SpringPetclinic/target/spring-petclinic-2.1.0.BUILD-SNAPSHOT.jar /opt/tomcat/webapps/
+		sh 'cp /var/lib/jenkins/workspace/SpringPetclinic/target/spring-petclinic-2.1.0.BUILD-SNAPSHOT.jar /opt/tomcat/webapps/'
             }
         }
     }
