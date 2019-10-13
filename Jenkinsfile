@@ -28,7 +28,9 @@ pipeline{
         }
         stage('Deploy'){
             steps{
-		sh 'cp /var/lib/jenkins/workspace/SpringPetclinic/target/spring-petclinic-2.1.0.BUILD-SNAPSHOT.jar /opt/tomcat/webapps/'
+                input 'Do you approve the deployment?'
+                sh 'scp target/*.jar deploy@45.76.96.139:/home/deploy'
+                sh "ssh deploy@45.76.96.139 'nohup java -jar /home/deploy/spring-petclinic-2.1.0.BUILD-SNAPSHOT.jar &'"
             }
         }
     }
