@@ -42,6 +42,8 @@ docker run -e MYSQL_ROOT_PASSWORD=petclinic -e MYSQL_DATABASE=petclinic -p 3306:
 
 ## Working with Petclinic in your IDE
 
+
+
 ### Prerequisites
 The following items should be installed in your system:
 * Java 8 or newer.
