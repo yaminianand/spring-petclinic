@@ -26,13 +26,12 @@ pipeline{
                 archiveArtifacts artifacts: 'target/*.jar', fingerprint: true
             }
         }
-        stage('Deploy'){
+	 stage('Deploy'){
             steps{
-		sh 'scp /var/lib/jenkins/workspace/SpringPetclinic/target/*.jar produser@45.76.96.139:/home/produser'
-		sh 'scp /var/lib/jenkins/workspace/SpringPetclinic/Dockerfile produser@45.76.96.139:/home/produser'
-		sh "ssh produser@45.76.96.139 'docker build /home/produser -t anjurose/petclinic'"
-		sh "ssh produser@45.76.96.139 'docker run -d -p 8087:8080 anjurose/petclinic'"
-            }
+                input 'Do you approve the deployment?'
+                sh 'scp target/*.jar produser@45.76.96.139:/home/produser/'
+            	sh "ssh produser@45.76.96.139 'nohup java -jar /home/produser/spring-petclinic-2.1.0.BUILD-SNAPSHOT.jar &'"
+		}
         }
     }
 }
