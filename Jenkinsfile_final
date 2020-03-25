@@ -2,7 +2,6 @@ pipeline{
     agent{label 'master'}
     tools{
         maven 'M3'
-	docker 'docker'
     }
     stages{
         stage('Checkout'){
