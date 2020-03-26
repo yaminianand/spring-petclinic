@@ -24,7 +24,8 @@ pipeline{
             steps{
                 sh 'mvn package'
                 archiveArtifacts artifacts: 'target/*.jar', fingerprint: true
-            }
+                publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: 'target/site/jacoco', reportFiles: 'index.html', reportName: 'HTML Report', reportTitles: '']) 
+		}
         }
         stage('Deploy'){
             steps{
