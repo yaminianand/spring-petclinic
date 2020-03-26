@@ -1,0 +1,5 @@
+---
+- hosts: slave1
+  become: true
+  roles:
+  - role: classProj
