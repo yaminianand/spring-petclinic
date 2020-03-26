@@ -23,7 +23,7 @@
       src: /var/lib/jenkins/workspace/spring_petclinic/Dockerfile
       dest: /home/dockDeploy/
    - name: Build Docker Image
-      command: chdir=/home/dockDeploy/ docker build . -t anjurose/inclas
+     command: chdir=/home/dockDeploy/ docker build . -t anjurose/inclass
    - name: Run Docker Container
-      command: chdir=/home/dockDeploy/ docker run -it -d -p 8085:8080 anjurose/inclass
+     command: chdir=/home/dockDeploy/ docker run -it -d -p 8085:8080 anjurose/inclass
 
