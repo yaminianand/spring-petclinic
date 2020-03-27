@@ -11,7 +11,7 @@ pipeline{
         }
         stage('Build'){
             steps{
-                 sh 'mvn clean compile'
+                 sh 'mvn clean verify'
             }
         }
         stage('Test'){
@@ -24,7 +24,9 @@ pipeline{
             steps{
                 sh 'mvn package'
                 archiveArtifacts artifacts: 'target/*.jar', fingerprint: true
-            }
+                publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: 'target/site/jacoco', reportFiles: 'index.html', reportName: 'HTML Report', reportTitles: '']) 
+		jacoco exclusionPattern: '**/src/main/java', inclusionPattern: '**/classes'
+		}
         }
         stage('Deploy'){
             steps{
