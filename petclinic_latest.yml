@@ -12,7 +12,7 @@
       state: present
    - name: Create new directory
      file:
-      path: /home/dockDeploy
+      path: /home/dockDeploy/target
       state: directory
    - name: Copy war file
      copy:
