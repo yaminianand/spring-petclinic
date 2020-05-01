@@ -11,7 +11,7 @@ pipeline{
         }
         stage('Build'){
             steps{
-                 sh 'mvn clean verify'
+                 sh 'mvn clean compile'
             }
         }
         stage('Test'){
@@ -24,16 +24,14 @@ pipeline{
             steps{
                 sh 'mvn package'
                 archiveArtifacts artifacts: 'target/*.jar', fingerprint: true
-                publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: 'target/site/jacoco', reportFiles: 'index.html', reportName: 'HTML Report', reportTitles: '']) 
-		jacoco exclusionPattern: '**/src/main/java', inclusionPattern: '**/classes'
-		}
+                }
         }
-        stage('Deploy'){
+        stage('Reports'){
             steps{
-		sh "docker build . -t anjurose/petclinic"
-		sh "docker run -d -p 8087:8080 anjurose/petclinic"
-            }
-        }
+                sh 'mvn verify'
+                publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: 'target/site/jacoco', reportFiles: 'index.html', reportName: 'HTML Report', reportTitles: ''])     
+                }
+        }   
     }
 }
 
