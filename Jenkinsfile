@@ -29,8 +29,8 @@ pipeline{
         stage('Deploy'){
             steps{
                     
-		sh "docker build . -t anjurose/petclinic"
-		sh "docker run -d -p 8087:8080 anjurose/petclinic"
+		sh "sudo docker build . -t anjurose/petclinic"
+		sh "sudo docker run -d -p 8087:8080 anjurose/petclinic"
                     
             }
         }
