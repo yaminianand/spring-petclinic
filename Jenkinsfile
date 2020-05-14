@@ -2,7 +2,6 @@ pipeline{
     agent{label 'master'}
     tools{
         maven 'M3'
-        docker 'D1'
     }
     stages{
         stage('Checkout'){
@@ -29,8 +28,11 @@ pipeline{
         }
         stage('Deploy'){
             steps{
+                    withTool(D1)
+                    {
 		sh "docker build . -t anjurose/petclinic"
 		sh "docker run -d -p 8087:8080 anjurose/petclinic"
+                    }
             }
         }
     }
