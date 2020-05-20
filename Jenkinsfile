@@ -32,7 +32,7 @@ pipeline{
 		sh "sudo docker build . -t anjurose/petclinic"
 		sh "sudo docker run -d -p 8091:8080 anjurose/petclinic"
                 //ansiblePlaybook credentialsId: 'ubuntu', disableHostKeyChecking: true, inventory: '/etc/ansible/hosts', playbook: './petclinic_latest.yml' 
-                    
+                sh "sudo puppet resource cron puppet-agent ensure=present user=root minute=1 command='/opt/puppetlabs/bin/puppet agent --onetime --no-daemonize --splay --splaylimit 60'"   
             }
         }
     }
