@@ -20,12 +20,12 @@ pipeline{
                  junit '**/target/surefire-reports/TEST-*.xml'
             }
         } 
-       // stage('Package'){
-         //   steps{
-           //     sh 'mvn package'
-             //   archiveArtifacts artifacts: 'target/*.jar', fingerprint: true
-               // }
-        //} 
+       stage('Package'){
+           steps{
+              sh 'mvn package'
+                archiveArtifacts artifacts: 'target/*.jar', fingerprint: true
+               }
+       } 
        // stage('Reports'){
          //   steps{
            //     sh 'mvn verify'
