@@ -26,12 +26,12 @@ pipeline{
                 archiveArtifacts artifacts: 'target/*.jar', fingerprint: true
                }
        } 
-       // stage('Reports'){
-         //   steps{
-           //     sh 'mvn verify'
-             //   publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: 'target/site/jacoco', reportFiles: 'index.html', reportName: 'HTML Report', reportTitles: ''])     
-               // }
-        //}  
+       stage('Reports'){
+           steps{
+               sh 'mvn verify'
+               publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: 'target/site/jacoco', reportFiles: 'index.html', reportName: 'HTML Report', reportTitles: ''])     
+              }
+        }  
     }
 }
 
