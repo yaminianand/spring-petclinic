@@ -7,7 +7,7 @@ pipeline{
     stages{
         stage('Checkout'){
             steps{
-                git 'https://github.com/yaminianand/spring-petclinic.git'
+                git 'https://github.com/yaminianand/spring-petclinic.git -b deploy'
             }
         }
         stage('Build'){
