@@ -7,7 +7,8 @@ pipeline{
     stages{
         stage('Checkout'){
             steps{
-                git 'https://github.com/yaminianand/spring-petclinic.git -b deploy'
+                // git 'https://github.com/yaminianand/spring-petclinic.git'
+                    echo "Code is already checkedout"
             }
         }
         stage('Build'){
