@@ -16,7 +16,7 @@
       state: directory
    - name: Copy war file
      copy:
-      src: /var/lib/jenkins/workspace/spring_petclinic/target/spring-petclinic-2.1.0.BUILD-SNAPSHOT.jar
+      src: /var/lib/jenkins/workspace/PetClinicAnsible/target/spring-petclinic-2.1.0.BUILD-SNAPSHOT.jar
       dest: /home/dockDeploy/target
    - name: Copy Dockerfile
      copy:
