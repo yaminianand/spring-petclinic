@@ -14,7 +14,7 @@
      file:
       path: /home/dockDeploy/target
       state: directory
-   - name: Copy war file
+   - name: Copy jar file
      copy:
       src: /var/lib/jenkins/workspace/PetClinicAnsible/target/spring-petclinic-2.1.0.BUILD-SNAPSHOT.jar
       dest: /home/dockDeploy/target
