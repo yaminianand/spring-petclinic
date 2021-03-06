@@ -20,7 +20,7 @@
       dest: /home/dockDeploy/target
    - name: Copy Dockerfile
      copy:
-      src: /var/lib/jenkins/workspace/spring_petclinic/Dockerfile
+      src: /var/lib/jenkins/workspace/PetClinicAnsible/Dockerfile
       dest: /home/dockDeploy/
    - name: Build Docker Image
      command: chdir=/home/dockDeploy/ docker build . -t anjurose/inclass
